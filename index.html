@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Magic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .tag-display {
+            background-color: #eee;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            word-break: break-all;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background-color: #0077b3;
+        }
+        .btn.done {
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Фича в Telegram</h1>
+    <p>Скопируй этот хэштег и поставь к себе в БИО (О себе) в настройках Телеграма, после этого будет магия:</p>
+    
+    <div class="tag-display" id="tagText">#frz17493376937693</div>
+    
+    <button class="btn" id="copyBtn" onclick="copyText()">Скопировать хэштег</button>
+</div>
+
+<script>
+function copyText() {
+    // Копируется только чистый хэштег без лишних слов
+    const textToCopy = "#frz1749337693";
+    
+    const el = document.createElement('textarea');
+    el.value = textToCopy;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    const btn = document.getElementById('copyBtn');
+    btn.innerText = 'Скопировано!';
+    btn.classList.add('done');
+
+    setTimeout(() => {
+        btn.innerText = 'Скопировать хэштег';
+        btn.classList.remove('done');
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
+
